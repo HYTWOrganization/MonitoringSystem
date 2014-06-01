@@ -1,19 +1,24 @@
-﻿<%@ Page Language="C#" Culture="auto" UICulture="auto" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Basic Information
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Monitoring System</title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/extjs-4.2.1/resources/css/ext-all-neptune.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/extjs-4.2.1/ext-all.js" type="text/javascript"></script>
+    <script src="../../Scripts/extjs-4.2.1/locale/ext-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../../Scripts/main.js" type="text/javascript"></script>
+    <script src="../../Scripts/extjs-4.2.1/examples/example-data.js" type="text/javascript"></script>
+</head>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%= Html.Encode(ViewData["Message"]) %></h2>
-    <p>
-        Computer Name: <%= Html.Encode(ViewData["HostName"] )%>
-        <a href="http://asp.net/mvc" title="ASP.NET MVC 网站">http://asp.net/mvc</a>。
-    </p>
-    <p>
-        Ipv4 Address: <%= Html.Encode(ViewData["Ipv4"]) %>
-    </p>
-    <p>
-        Ipv6 Address: <%= Html.Encode(ViewData["Ipv6"]) %>
-    </p>
-</asp:Content>
+<body>
+    <div id="main-north"></div>
+    <div id="main-west"></div>
+    <div id="main-center">
+    </div>
+    <div id="main-south"></div>
+    
+</body>
+</html>

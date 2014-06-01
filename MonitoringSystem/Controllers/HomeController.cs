@@ -14,6 +14,12 @@ namespace MonitoringSystem.Controllers
         public ActionResult Index()
         {
             ViewData["Message"] = "Welcome! There is basic information.";
+            return View();
+        }
+
+        public ActionResult SystemInfo()
+        {
+            ViewData["Message"] = "Welcome! There is basic information.";
             ViewData["HostName"] = getComputerName();
             ArrayList ipList = getIpAddress();
             if (ipList.Count == 1)
@@ -28,6 +34,7 @@ namespace MonitoringSystem.Controllers
             }
             return View();
         }
+
 
         public ActionResult Memory()
         {

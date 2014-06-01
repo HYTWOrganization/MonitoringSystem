@@ -12720,6 +12720,8 @@
     <Content Include="Scripts\extjs-4.2.1\welcome\img\_bg-blue.gif" />
     <Content Include="Scripts\extjs-4.2.1\welcome\img\_welcome-bg-js4.gif" />
     <Content Include="Scripts\extjs-4.2.1\welcome\release-notes.css" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Views\Home\SystemInfo.aspx" />
     <Content Include="Views\Maps\ViewMaps.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

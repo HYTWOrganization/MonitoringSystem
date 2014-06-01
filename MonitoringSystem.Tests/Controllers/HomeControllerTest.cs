@@ -23,7 +23,20 @@ namespace MonitoringSystem.Tests.Controllers
 
             // 断言
             ViewDataDictionary viewData = result.ViewData;
-            Assert.AreEqual("Welcome! There are basic information.", viewData["Message"]);
+            Assert.AreEqual("Welcome! There is basic information.", viewData["Message"]);
+        }
+
+        [TestMethod]
+        public void SystemInfo()
+        {
+            // 排列
+            HomeController controller = new HomeController();
+
+            // 操作
+            ViewResult result = controller.SystemInfo() as ViewResult;
+
+            // 断言
+            ViewDataDictionary viewData = result.ViewData;
         }
 
         [TestMethod]
