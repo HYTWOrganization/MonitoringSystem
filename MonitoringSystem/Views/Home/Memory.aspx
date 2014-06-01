@@ -4,11 +4,31 @@
 <script type="text/javascript">
     Ext.onReady(function () {
         alert("hello");
-        store1.loadData(generateData(8));
+        /*Ext.define('Memory', {
+            extend: 'Ext.data.Model',
+            fields: [
+                 { name: 'memory', type: 'int' }
+             ]
+        });*/
+
+        /*var myStore = Ext.create('Ext.data.Store', {
+            model: 'Memory',
+            proxy: {
+                type: 'ajax',
+                url: '/mem.json',
+                reader: {
+                    type: 'json',
+                    root: 'mem'
+                }
+            },
+            autoLoad: true
+        });*/
+
+        /*store1.loadData(generateData(8));
         var chart = Ext.create('Ext.chart.Chart', {
             style: 'background:#fff',
             animate: true,
-            store: store1,
+            store: memStore,
             shadow: true,
             theme: 'Category1',
             legend: {
@@ -86,8 +106,67 @@
                 }
             }]
 
+        });*/
+        Ext.define('MemoryUsage', {
+            extend: 'Ext.data.Model',
+            fields: ['memory', 'time']
         });
-        JKXT.center.add(chart);
+
+        var store = Ext.create('Ext.data.Store', {
+            model: 'MemoryUsage',
+            /*data: [
+                { memory: 58, time: 1 },
+                { memory: 63, time: 2 },
+                { memory: 73, time: 3 },
+                { memory: 78, time: 4 },
+                { memory: 81, time: 5 }
+            ],*/
+            proxy: {
+                type: 'ajax',
+                url: 'Memory/GetData',
+                reader: {
+                    type: 'json',
+                    root: 'MemoryUsage'
+                }
+            },
+            autoLoad: true
+        });
+
+        var chart = Ext.create('Ext.chart.Chart', {
+            renderTo: Ext.getBody(),
+            width: 400,
+            height: 300,
+            store: store,
+            axes: [
+                {
+                    title: 'Memory',
+                    type: 'Numeric',
+                    position: 'left',
+                    fields: ['memory'],
+                    minimum: 0,
+                    maximum: 100
+                },
+                {
+                    title: 'Time',
+                    type: 'Numeric',
+                    position: 'bottom',
+                    fields: ['time'],
+                    minimum: 1,
+                    maximum: 8
+                }
+            ],
+            series: [
+                {
+                    type: 'line',
+                    xField: 'time',
+                    yField: 'memory'
+                }
+            ]
+        });
+            JKXT.center.add(chart);
+            setInterval(function () {
+                store.reload();  
+            }, 10000);  //10seconds
     });
 </script>
 <div id='memory-chart'>
