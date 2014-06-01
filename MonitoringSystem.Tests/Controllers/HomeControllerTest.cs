@@ -23,7 +23,7 @@ namespace MonitoringSystem.Tests.Controllers
 
             // 断言
             ViewDataDictionary viewData = result.ViewData;
-            Assert.AreEqual("欢迎使用 ASP.NET MVC!", viewData["Message"]);
+            Assert.AreEqual("Welcome! There are basic information.", viewData["Message"]);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace MonitoringSystem.Tests.Controllers
             HomeController controller = new HomeController();
 
             // 操作
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.Memory() as ViewResult;
 
             // 断言
             Assert.IsNotNull(result);
