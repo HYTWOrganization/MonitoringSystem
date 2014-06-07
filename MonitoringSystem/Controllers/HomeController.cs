@@ -41,6 +41,12 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
+        public ContentResult CPUInfo()
+        {
+            //string userHeaderMsg = Convert.ToString(Request.Headers["userHeader"]);
+            return Content("25");
+        }
+
         //get the IP address
         public ArrayList getIpAddress()
         {

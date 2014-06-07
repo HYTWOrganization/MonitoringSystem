@@ -73,9 +73,11 @@
       <DependentUpon>Site.Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CPUInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MemoryController.cs" />
+    <Compile Include="Controllers\returnCPUInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -85,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Lib\System.Web.Mvc.dll" />
     <Content Include="Scripts\extjs-4.2.1\.sencha\workspace\plugin.xml" />
     <Content Include="Scripts\extjs-4.2.1\bootstrap.js" />
     <Content Include="Scripts\extjs-4.2.1\build.xml" />
@@ -12723,6 +12726,8 @@
     <Content Include="Scripts\extjs-4.2.1\welcome\img\_welcome-bg-js4.gif" />
     <Content Include="Scripts\extjs-4.2.1\welcome\release-notes.css" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Views\Home\CPUInfo.aspx" />
+    <Content Include="Views\Home\returnCPUInfo.aspx" />
     <Content Include="Views\Home\SystemInfo.aspx" />
     <Content Include="Views\Maps\ViewMaps.aspx" />
     <Content Include="Web.config" />

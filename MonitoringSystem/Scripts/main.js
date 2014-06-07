@@ -36,14 +36,20 @@
     }),
     menuData: [
         {
+            name: 'Welcome',
+            href: 'Home/Index'
+        }, {
             name: 'Basic Information',
             href: 'Home/SystemInfo'
         }, {
-            name: 'Menu2',
-            href: 'Home/Index'
+            name: 'CPU Usage',
+            href: 'Home/CPUInfo'
         }, {
             name: 'Memory Usage',
             href: 'Home/Memory'
+        }, {
+            name: 'Process List',
+            href: 'Home/ProcessInfo'
         }
     ],
     onMainLoadReady: Ext.emptyFn,
