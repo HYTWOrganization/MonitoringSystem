@@ -35,8 +35,12 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
-
         public ActionResult Memory()
+        {
+            return View();
+        }
+
+        public ActionResult ProcessInfo()
         {
             return View();
         }

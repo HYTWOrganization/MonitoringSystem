@@ -49,7 +49,7 @@
             return function () {
                 data = data.slice();
                 memValue = memObj1.getMemValue();
-                if (data.length == 10)
+                if (data.length == 30)
                     data.splice(0, 1);
                 data.push({
                     time: ++i, 
@@ -111,7 +111,7 @@
                     field: 'time',
                     title: 'Time',
                     minimum: 1,
-                    maximum: 10
+                    maximum: 30
                 }
             ],
             series: [
