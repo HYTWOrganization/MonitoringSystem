@@ -66,8 +66,6 @@
 </script>
 <script type="text/javascript">
     Ext.onReady(function () {
-        alert("hello");
-
         Ext.define('MemoryUsage', {
             extend: 'Ext.data.Model',
             fields: ['memory', 'time']
