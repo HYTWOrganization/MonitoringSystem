@@ -23,7 +23,7 @@ namespace MonitoringSystem.Controllers
             public uint dwAvailVirtual;    
         }        
 
-        public JsonResult GetData()
+        /*public JsonResult GetData()
         {
             IEnumerable<MemoryModels> list = new List<MemoryModels>{
                 new MemoryModels(){ memory = GetMemoryValue(), time = 8},
@@ -36,9 +36,7 @@ namespace MonitoringSystem.Controllers
                 new MemoryModels(){ memory = GetMemoryValue(), time = 1}
             };
             return Json(list, JsonRequestBehavior.AllowGet);
-            /*MemoryModels mm = new MemoryModels() { memory = GetMemoryValue(), time = 8 };
-            return Json(mm, JsonRequestBehavior.AllowGet);*/
-        }
+        }*/
 
         public class getmemory {
             [DllImport("kernel32")]        
