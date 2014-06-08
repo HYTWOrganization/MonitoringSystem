@@ -3,47 +3,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
-    <!--<link href="Scripts/extjs-4.2.1/resources/css/ext-all.css" rel="stylesheet" />
-    <script type="text/javascript" src="Scripts/extjs-4.2.1/bootstrap.js"></script>-->
+<head>
+    <link href="../../Scripts/extjs-4.2.1/resources/css/ext-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../Scripts/extjs-4.2.1/bootstrap.js"></script>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+    <body>
+        <form id="form1" runat="server">
+        <div>
     
-    </div>
-    </form>
-</body>
+        </div>
+        </form>
+    </body>
 </html>
 <script type="text/javascript">
-    /*function init_ext() {
-    }
-    Ext.onReady(init_ext);*/
-    //alert("2");
-    Ext.require('Ext.chart.*');
-
-    Ext.onReady(function () {
-        var chart, timeAxis, intr;
-
-        function getCPUValue(){
+    var chart, timeAxis;
+    var startDate, endDate;
+    
+    Ext.define('My.Sample.HandleCPU',{
+	    name:'unknown',
+	    constructor:function(name){
+	    	if(name){
+	    		this.name = name;
+	    	}
+	    },
+	    getCPUValue:function(){
              var retValue = 0;
              Ext.Ajax.request({
-                    //url: 'AjaxTest.aspx/Ajax_Func2',
+                    url: 'GetCPUInfo',
                     //url: 'returnCPUInfo.aspx',  //cpu处理页面
                     //params: { a: 10, b: 20 },
-                    url: 'CPUInfo',
                     method: 'GET',
                     type:'text/html',
                     async: false,
                     success: function (response, options) {
-                        //Ext.MessageBox.alert('成功', '结果: ' + response.responseText);
-
-                        //var aa = response.responseText.getElementById("cpuInfo").innerText;
-                        //retValue = Number(response.responseText);
-                        //var aa = '123';
                         retValue = Number(response.responseText);
-                        // Ext.MessageBox.alert('成功', retValue);
+                        //alert(retValue);
                         return retValue;
                     },
                     failure: function (response, options) {
@@ -52,63 +46,67 @@
                     }
                 });
             return retValue;
-        }
-
-        Ext.create('Ext.Button', {
-            text: '获取CPU利用率',
-            renderTo: Ext.getBody(),
-            handler: function () {
-            intr = setInterval(function () {
-            var gs = generateData();
-            var toDate = timeAxis.toDate,
-            lastDate = gs[gs.length - 1].date,
-            markerIndex = chart.markerIndex || 0;
-            if (+toDate < +lastDate) {
-                markerIndex = 1;
-                timeAxis.toDate = lastDate;
-                timeAxis.fromDate = Ext.Date.add(Ext.Date.clone(timeAxis.fromDate), Ext.Date.SECOND, 1);
-                chart.markerIndex = markerIndex;
-            }
-            store.loadData(gs);
-        }, 5000);
-            },
-            id: "btn_startCPU"
-        });
-        Ext.create('Ext.Button', {
-            text: '停止捕获',
-            renderTo: Ext.getBody(),
-            handler: function () {
-               clearInterval(intr);
-            },
-            id: "btn_endCPU"
-        });
-
-        var generateData = (function () {
+        },
+        
+        regroup:function() {
+            group = !group;
+            var axis = chart.axes.get(1),
+            selectedGroup = groupOp[+group];
+            axis.dateFormat = selectedGroup.dateFormat;
+            axis.groupBy = selectedGroup.groupBy;
+            chart.redraw();
+        },
+        
+        genData:function () {
+            var cpuObj1 = Ext.create('My.Sample.HandleCPU',"handleCPU");
             var data = [], i = 0,
             last = false,
-            date = new Date("April 2 2013 10:10:1"),
+            //date = new Date("April 2 2013 10:10:1"),
+            
+            date  = startDate;
             seconds = +date,
             min = Math.min,
             max = Math.max,
             random = Math.random;
             cpuValue = 0;
-            return function () {
+            return function () {//update data info
                 data = data.slice();
-                cpuValue = getCPUValue();
-                //Ext.MessageBox.alert('成功', cpuValue);
+                cpuValue = cpuObj1.getCPUValue();
                 data.push({
-                    date: Ext.Date.add(date, Ext.Date.SECOND, i++),
+                    date: Ext.Date.add(date, Ext.Date.SECOND, i),
                     //visits: min(100, max(last ? last.visits + (random() - 0.5) * 20 : random() * 100, 0))
                     visits: cpuValue
 
                 });
+                //alert(i);
+                i=i+5;
                 last = data[data.length - 1];
                 return data;
             };
-        })();
+        }
+        
+        
+    });
+    Ext.require('Ext.chart.*');
+
+    Ext.onReady(function () {
+    	var cpuObj = Ext.create('My.Sample.HandleCPU',"handleCPU");
+       /* Ext.create('Ext.Button', {
+            text: '获取CPU利用率',
+            renderTo: Ext.getBody(),
+            handler: function () {
+               cpuObj.getCPUValue();
+            },
+            id: "bt1"
+        });*/
+		startDate = new Date();
+		endDate = Ext.Date.add(startDate, Ext.Date.MINUTE, 5);
+
+        var generateData = cpuObj.genData();
 
         var group = false,
         groupOp = [{
+            //dateFormat: 'H i s',
             dateFormat: 'H i s',
             groupBy: 'hour,minute,second',
         }, {
@@ -116,21 +114,17 @@
             groupBy: 'hour,minute,second',
         }];
 
-        function regroup() {
-            group = !group;
-            var axis = chart.axes.get(1),
-            selectedGroup = groupOp[+group];
-            axis.dateFormat = selectedGroup.dateFormat;
-            axis.groupBy = selectedGroup.groupBy;
-            chart.redraw();
-        }
+        
 
         var store = Ext.create('Ext.data.JsonStore', {
             fields: ['date', 'visits'],
             data: generateData()
         });
 
-       /* var intr = setInterval(function () {
+        var iii=1;
+        var intr = setInterval(function () {
+            iii = iii + 1;
+            //alert(iii);
             var gs = generateData();
             var toDate = timeAxis.toDate,
             lastDate = gs[gs.length - 1].date,
@@ -138,11 +132,12 @@
             if (+toDate < +lastDate) {
                 markerIndex = 1;
                 timeAxis.toDate = lastDate;
-                timeAxis.fromDate = Ext.Date.add(Ext.Date.clone(timeAxis.fromDate), Ext.Date.SECOND, 1);
+                timeAxis.fromDate = Ext.Date.add(Ext.Date.clone(timeAxis.fromDate), Ext.Date.SECOND, 5);
                 chart.markerIndex = markerIndex;
             }
             store.loadData(gs);
-        }, 5000);*/
+            //alert(iii);
+        }, 5000);
 
        /* var myDate = new Date();  
         myDate.getYear();      //获取当前年份(2位)
@@ -158,7 +153,7 @@
         historyDaytoDate.setSeconds(historyDayFromDate.getSeconds()+10);*/
 
         var win = Ext.create('Ext.window.Window', {
-            width: 800,
+            width: 900,
             height: 600,
             minHeight: 400,
             minWidth: 550,
@@ -192,13 +187,16 @@
                     position: 'bottom',
                     fields: 'date',  //数据绑定
                     title: 'Time',//横坐标
+                    step: [Ext.Date.SECOND, 5], 
                     dateFormat: 'H:i:s',
                     groupBy: 'hour,minute,second', //精确度
                     aggregateOp: 'sum',
 
                     constrain: true,
-                    fromDate: new Date("April 2 2013 10:10:1"),
-                    toDate: new Date("April 2 2013 10:10:10"),
+                    //fromDate: new Date("April 2 2013 10:10:1"),
+                    //toDate: new Date("April 2 2013 10:15:1"),
+                    fromDate: startDate,
+                    toDate: endDate,
                     //fromDate: historyDayFromDate,
                     //toDate: historyDaytoDate,
                     grid: true

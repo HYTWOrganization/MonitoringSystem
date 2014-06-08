@@ -5,12 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using System.Collections;
 using System.Net;
+using System.Diagnostics;
+using MonitoringSystem.Models;
+//using System.Management;
 
 namespace MonitoringSystem.Controllers
 {
     [HandleError]
     public class HomeController : Controller
     {
+        PerformanceCounter _oPerformanceCounter;
+
+        public HomeController()
+        { 
+            _oPerformanceCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+        }
+        
         public ActionResult Index()
         {
             ViewData["Message"] = "Welcome! There is basic information.";
@@ -41,10 +51,22 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
-        public ContentResult CPUInfo()
+        public ContentResult GetCPUInfo()
         {
-            //string userHeaderMsg = Convert.ToString(Request.Headers["userHeader"]);
-            return Content("25");
+			
+			//float _nVal=_oPerformanceCounter.NextValue();
+			//_nVal中就是当前CPU的使用率了，加上百分号(%)就是使用率的百分比，比如：
+			//string _s="当前CPU使用率：" + nVal.ToString("0.0") + "%";
+            //string userHeader"25"Msg = Convert.ToString(Request.Headers["userHeader"]);
+            //return Content(_nVal.ToString());
+            string cpuValue = HomeModel.GetCPUInfo();
+            return Content(cpuValue);
+        }
+
+
+        public ActionResult CPUInfo()
+        {
+            return View();
         }
 
         //get the IP address
