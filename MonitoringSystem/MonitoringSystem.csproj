@@ -63,6 +63,16 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\strings.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\strings.zh-cn.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.zh-cn.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\Index.aspx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -12769,7 +12779,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_GlobalResources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\extjs-4.2.1\.sencha\workspace\codegen" />
@@ -13497,6 +13506,16 @@
     <Content Include="App_LocalResources\Site.Master.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Site.Master.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\strings.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>strings.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\strings.zh-cn.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>strings.zh-cn.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

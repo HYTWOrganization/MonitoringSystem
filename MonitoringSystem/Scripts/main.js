@@ -80,7 +80,7 @@
     mainPanelLoad: function (url) {
         JKXT.clearMainPanel();
         //JKXT.onMainLoadReady = Ext.emptyFn;
-        Ext.get("center").mask('loading');
+        Ext.get("center").mask("loading");
         JKXT.center.body.load({
             url: url,
             nocache: true,
@@ -129,7 +129,7 @@ Ext.onReady(function () {
         menuPanel.add(menuItem);
     }
     JKXT.west.add(menuPanel);
-    JKXT.mainPanelLoad('Home/Welcome');
+    //JKXT.mainPanelLoad('Home/Welcome');
     /*JKXT.center.body.load({
             url: 'Home/Welcome',
             nocache: true,
@@ -153,18 +153,5 @@ Ext.onReady(function () {
             JKXT.south
 		]
     });
-    /*Ext.Ajax.request({
-                    url: 'Home/Welcome',
-                    method: 'get',
-                    //type: 'text/html',
-                    //async: false,
-                    success: function (response) {
-                        JKXT.mainPanelLoad(btn.href);
-                    },
-                    failure: function (response) {
-                        alert("failure");
-                    }	*/
-    
-    //alert('end');
 });
 
