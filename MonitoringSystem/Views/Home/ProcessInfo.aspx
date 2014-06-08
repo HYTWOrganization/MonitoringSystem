@@ -24,7 +24,6 @@
             },
             autoLoad:true
         });
-        store.load();
 
         var panel = Ext.create('Ext.grid.Panel', {
             title: 'Process Informaiton',
