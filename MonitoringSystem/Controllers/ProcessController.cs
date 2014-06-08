@@ -19,7 +19,7 @@ namespace MonitoringSystem.Controllers
             for (int i = 0; i < processes.Length; i++)
             {
                 pro = processes[i];
-                list.Add(new ProcessModels() { process = pro.ProcessName, name = GetProcessUserName(pro.Id), cpu = "00", memory = ConvertToStr(pro.WorkingSet64), description = pro.MainWindowTitle });
+                list.Add(new ProcessModels() { process = pro.ProcessName, name = GetProcessUserName(pro.Id), cpu = GetCPURate(pro.ProcessName), memory = ConvertToStr(pro.WorkingSet64), description = pro.MainWindowTitle });
             }
             return Json(list, JsonRequestBehavior.AllowGet);
         }
@@ -58,6 +58,20 @@ namespace MonitoringSystem.Controllers
                 name = "SYSTEM";
             }
             return name;
+        }
+
+        //get the cpu rate by the process name
+        private string GetCPURate(string pName)
+        {
+            string usage;
+            /*PerformanceCounter cpuUsage = new PerformanceCounter("Process", "% Process Time", pName);
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            sw.Stop();
+            float duration = (float)sw.Elapsed.TotalSeconds;
+            usage = cpuUsage.NextValue().ToString();*/
+            usage = "00";
+            return usage;
         }
     }
 }

@@ -12728,8 +12728,10 @@
     <Content Include="Scripts\extjs-4.2.1\welcome\release-notes.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Views\Home\CPUInfo.aspx" />
+    <Content Include="Views\Home\HardDisk.aspx" />
     <Content Include="Views\Home\ProcessInfo.aspx" />
     <Content Include="Views\Home\SystemInfo.aspx" />
+    <Content Include="Views\Home\Welcome.aspx" />
     <Content Include="Views\Maps\ViewMaps.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
