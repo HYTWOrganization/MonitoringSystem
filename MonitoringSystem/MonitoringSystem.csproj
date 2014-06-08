@@ -74,6 +74,7 @@
       <DependentUpon>Site.Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HardDiskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MemoryController.cs" />
@@ -82,6 +83,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DiskModels.cs" />
     <Compile Include="Models\MemoryModels.cs" />
     <Compile Include="Models\ProcessModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
