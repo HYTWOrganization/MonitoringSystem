@@ -74,20 +74,29 @@
       <DependentUpon>Site.Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
+    <Compile Include="Controllers\MemoryController.cs" />
+=======
     <Compile Include="Controllers\HardDiskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MemoryController.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
+>>>>>>> c62d6d896d2143444b0265ad9636c378c2c15e4c
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\DiskModels.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\HomeModel.cs" />
+=======
+    <Compile Include="Models\DiskModels.cs" />
+>>>>>>> c62d6d896d2143444b0265ad9636c378c2c15e4c
     <Compile Include="Models\MemoryModels.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ProcessModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -12731,8 +12740,11 @@
     <Content Include="Scripts\extjs-4.2.1\welcome\release-notes.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Views\Home\CPUInfo.aspx" />
+<<<<<<< HEAD
+=======
     <Content Include="Views\Home\HardDisk.aspx" />
     <Content Include="Views\Home\ProcessInfo.aspx" />
+>>>>>>> c62d6d896d2143444b0265ad9636c378c2c15e4c
     <Content Include="Views\Home\SystemInfo.aspx" />
     <Content Include="Views\Home\Welcome.aspx" />
     <Content Include="Views\Maps\ViewMaps.aspx" />

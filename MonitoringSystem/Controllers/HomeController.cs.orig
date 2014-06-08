@@ -55,6 +55,9 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
+<<<<<<< HEAD
+        public ContentResult GetCPUInfo()
+=======
         public ActionResult ProcessInfo()
         {
             return View();
@@ -65,7 +68,8 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
-        public ContentResult GetCPUInfo()
+        public ContentResult CPUInfo()
+>>>>>>> c62d6d896d2143444b0265ad9636c378c2c15e4c
         {
 			
 			//float _nVal=_oPerformanceCounter.NextValue();
