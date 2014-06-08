@@ -7,6 +7,9 @@ using System.Collections;
 using System.Net;
 using System.Diagnostics;
 using MonitoringSystem.Models;
+using System.Resources;
+using System.Globalization;
+using System.Threading;
 //using System.Management;
 
 namespace MonitoringSystem.Controllers
@@ -14,11 +17,12 @@ namespace MonitoringSystem.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        PerformanceCounter _oPerformanceCounter;
-
+        protected ResourceManager LocRM;
         public HomeController()
         { 
-            _oPerformanceCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            //_oPerformanceCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            
+
         }
         
         public ActionResult Index()
@@ -34,6 +38,12 @@ namespace MonitoringSystem.Controllers
 
         public ActionResult SystemInfo()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Request.UserLanguages[0]);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Request.UserLanguages[0]);
+            LocRM = new ResourceManager("MonitoringSystem.strings", typeof(HomeController).Assembly);
+            ViewData["HostName_label"] = HttpContext.GetGlobalResourceObject("strings", "pc_name").ToString();
+            ViewData["ipv4_label"] = HttpContext.GetGlobalResourceObject("strings", "ip4_addr").ToString();
+            ViewData["ipv6_label"] = HttpContext.GetGlobalResourceObject("strings", "ip6_addr").ToString();
             ViewData["Message"] = "Welcome! There is basic information.";
             ViewData["HostName"] = getComputerName();
             ArrayList ipList = getIpAddress();

@@ -86,5 +86,23 @@ namespace Resources {
                 return ResourceManager.GetString("pc_name", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 SystemInfo 的本地化字符串。
+        /// </summary>
+        internal static string SystemInfo {
+            get {
+                return ResourceManager.GetString("SystemInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Welcome 的本地化字符串。
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
     }
 }

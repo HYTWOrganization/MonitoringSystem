@@ -4,13 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Diagnostics;
 using System.Management;
+using System.Threading;
+using System.Resources;
+using System.Globalization;
 
 namespace MonitoringSystem.Models
 {
     public class HomeModel
     {
         public static PerformanceCounter _oPerformanceCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-       
+        //protected ResourceManager LocRM;
+        public HomeModel()
+        {
+           // Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Request.UserLanguages[0]);
+           // Thread.CurrentThread.CurrentUICulture = new CultureInfo(Request.UserLanguages[0]);
+           // LocRM = new ResourceManager("HandleSystemInfo.strings", typeof(SystemInfo).Assembly);
+
+        }
         public static string GetCPUInfo()
         {
             

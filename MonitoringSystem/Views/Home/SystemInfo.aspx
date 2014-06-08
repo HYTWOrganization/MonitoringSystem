@@ -29,9 +29,9 @@ function getInfo() {
             rows:3
         },
         items: [
-            {xtype:"panel", title:"Computer Name", html:'<%= Html.Encode(ViewData["HostName"] )%>', width:200},
-            {xtype:"panel", title:"IPv4", html:"<%= Html.Encode(ViewData["Ipv4"]) %>", width:200},
-            {xtype:"panel", title:"IPv6", html:"<%= Html.Encode(ViewData["Ipv6"]) %>", width:200}
+            {xtype:"panel", title:'<%= Html.Encode(ViewData["HostName_label"] )%>', html:'<%= Html.Encode(ViewData["HostName"] )%>', width:200},
+            {xtype:"panel", title:"<%= Html.Encode(ViewData["ip4_label"] )%>", html:"<%= Html.Encode(ViewData["Ipv4"]) %>", width:200},
+            {xtype:"panel", title:"<%= Html.Encode(ViewData["ip6_label"] )%>", html:"<%= Html.Encode(ViewData["Ipv6"]) %>", width:200}
         ]
     });
     JKXT.center.add(panel); 
