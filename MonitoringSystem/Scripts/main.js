@@ -37,7 +37,7 @@
     menuData: [
         {
             name: 'Welcome',
-            href: 'Home/Index'
+            href: 'Home/Welcome'
         }, {
             name: 'Basic Information',
             href: 'Home/SystemInfo'
@@ -50,6 +50,9 @@
         }, {
             name: 'Process List',
             href: 'Home/ProcessInfo'
+        }, {
+            name: 'Hard Disk Usage',
+            href: 'Home/HardDisk'
         }
     ],
     onMainLoadReady: Ext.emptyFn,

@@ -27,6 +27,11 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
         public ActionResult SystemInfo()
         {
             ViewData["Message"] = "Welcome! There is basic information.";
@@ -45,8 +50,17 @@ namespace MonitoringSystem.Controllers
             return View();
         }
 
-
         public ActionResult Memory()
+        {
+            return View();
+        }
+
+        public ActionResult ProcessInfo()
+        {
+            return View();
+        }
+
+        public ActionResult HardDisk()
         {
             return View();
         }

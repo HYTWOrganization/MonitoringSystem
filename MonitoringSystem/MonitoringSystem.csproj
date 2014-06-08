@@ -45,6 +45,7 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -73,16 +74,20 @@
       <DependentUpon>Site.Master.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HardDiskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MemoryController.cs" />
+    <Compile Include="Controllers\ProcessController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\DiskModels.cs" />
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\MemoryModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\ProcessModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -12726,7 +12731,10 @@
     <Content Include="Scripts\extjs-4.2.1\welcome\release-notes.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Views\Home\CPUInfo.aspx" />
+    <Content Include="Views\Home\HardDisk.aspx" />
+    <Content Include="Views\Home\ProcessInfo.aspx" />
     <Content Include="Views\Home\SystemInfo.aspx" />
+    <Content Include="Views\Home\Welcome.aspx" />
     <Content Include="Views\Maps\ViewMaps.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
