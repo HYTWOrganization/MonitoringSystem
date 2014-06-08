@@ -8,6 +8,6 @@ namespace MonitoringSystem.Models
     public class DiskModels
     {
         public string name { get; set; }
-        public int data { get; set; }
+        public long data { get; set; }
     }
 }
