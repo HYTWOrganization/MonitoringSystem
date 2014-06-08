@@ -41,6 +41,10 @@
         });
 
         JKXT.center.add(panel);
+
+        setInterval(function () {
+            store.reload();
+        }, 10000);  //10seconds
     });
 </script>
 <div>
