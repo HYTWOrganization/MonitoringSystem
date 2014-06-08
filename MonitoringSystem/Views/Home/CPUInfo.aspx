@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,7 +14,7 @@
         </div>
         </form>
     </body>
-</html>
+</html>-->
 <script type="text/javascript">
     var chart, timeAxis;
     var startDate, endDate;
@@ -29,7 +29,7 @@
 	    getCPUValue:function(){
              var retValue = 0;
              Ext.Ajax.request({
-                    url: 'GetCPUInfo',
+                    url: 'Home/GetCPUInfo',
                     //url: 'returnCPUInfo.aspx',  //cpu处理页面
                     //params: { a: 10, b: 20 },
                     method: 'GET',
@@ -152,16 +152,17 @@
         var historyDaytoDate = new Date();    //时间轴截止时间
         historyDaytoDate.setSeconds(historyDayFromDate.getSeconds()+10);*/
 
-        var win = Ext.create('Ext.window.Window', {
-            width: 900,
-            height: 600,
-            minHeight: 400,
-            minWidth: 550,
-            maximizable: true,
-            title: 'CPU utilization Chart',//表格标题
-            autoShow: true,
-            layout: 'fit',
-            items: [{
+        var chart = Ext.create('Ext.chart.Chart', {
+        	renderTo: Ext.getBody(),
+            width: 400,
+            height: 300,
+            //minHeight: 400,
+            //minWidth: 550,
+            //maximizable: true,
+            //title: 'CPU utilization Chart',//表格标题
+            //autoShow: true,
+            //layout: 'fit',
+            //items: [{
                 xtype: 'chart',
                 style: 'background:#fff',
                 itemId: 'chartCmp',
@@ -219,9 +220,10 @@
                     }
                 }
                     ]
-            }]
+            //}]
         });
-        chart = win.child('#chartCmp');
+        //chart = win.child('#chartCmp');
         timeAxis = chart.axes.get(1);//初始化时间轴对象
+        JKXT.center.add(chart);
     });
 </script>
