@@ -32,7 +32,7 @@
         id: 'center',
         layout: 'fit',
         margins: '5 5 0 0',
-        html: 'This is center'
+        html: '<h2>Hi! </h2><h2>Welcome to Computer Information Monitoring System.</h2>'
     }),
     menuData: [
         {
