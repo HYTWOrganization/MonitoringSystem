@@ -29,10 +29,10 @@
             title: 'Process Informaiton',
             store: store, //Ext.data.StoreManager.lookup('processStore'),
             columns: [
-                { text: 'Process', dataIndex: 'process' },
+                { text: 'Process', dataIndex: 'process', width: 200 },
                 { text: 'Name', dataIndex: 'name' },
-                { text: 'Cpu', dataIndex: 'cpu', },
-                { text: 'Memory', dataIndex: 'memory' },
+                { text: 'CPU', dataIndex: 'cpu', align: 'right' },
+                { text: 'Memory', dataIndex: 'memory', align: 'right' },
                 { text: 'Description', dataIndex: 'description', flex: 1 }
             ],
             height: 200,
@@ -44,7 +44,7 @@
 
         setInterval(function () {
             store.reload();
-        }, 10000);  //10seconds
+        }, 20000);  //10seconds
     });
 </script>
 <div>

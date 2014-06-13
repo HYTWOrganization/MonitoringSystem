@@ -28,7 +28,7 @@ namespace MonitoringSystem.Controllers
         private string ConvertToStr(long mem)
         {
             string memStr;
-            memStr = (mem / 1024).ToString() + 'K';
+            memStr = (mem / 1024).ToString() + " K";
             return memStr;
         }
 
@@ -59,18 +59,21 @@ namespace MonitoringSystem.Controllers
             }
             return name;
         }
-
+        
         //get the cpu rate by the process name
         private string GetCPURate(string pName)
         {
-            string usage;
-            /*PerformanceCounter cpuUsage = new PerformanceCounter("Process", "% Process Time", pName);
+            string usage = null;
+            PerformanceCounter cpuUsage = new PerformanceCounter("Process", "% Processor Time", pName);
             Stopwatch sw = new Stopwatch();
             sw.Start();
+            System.Threading.Thread.Sleep(100);
             sw.Stop();
             float duration = (float)sw.Elapsed.TotalSeconds;
-            usage = cpuUsage.NextValue().ToString();*/
-            usage = "00";
+            float cpuValue = cpuUsage.NextValue();
+            //Console.Write(cpuValue);
+            usage =cpuValue.ToString();
+            //usage = "00";
             return usage;
         }
     }

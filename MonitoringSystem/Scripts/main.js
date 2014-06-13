@@ -110,7 +110,7 @@ Ext.onReady(function () {
             scale: 'large',
             text: JKXT.menuData[i].name,
             href: JKXT.menuData[i].href,
-            handler: function (btn,e) {
+            handler: function (btn, e) {
                 e.stopEvent();
                 Ext.Ajax.request({
                     url: btn.href,
@@ -131,17 +131,17 @@ Ext.onReady(function () {
     JKXT.west.add(menuPanel);
     //JKXT.mainPanelLoad('Home/Welcome');
     /*JKXT.center.body.load({
-            url: 'Home/Welcome',
-            nocache: true,
-            text: '载入中……',
-            timeout: 30,
-            scripts: true,
-            callback: function () {
-                //JKXT.mainPanelCallback();
-            }
-        });
-        //Ext.get("center").unmask();
-        JKXT.center.doLayout();*/
+    url: 'Home/Welcome',
+    nocache: true,
+    text: '载入中……',
+    timeout: 30,
+    scripts: true,
+    callback: function () {
+    //JKXT.mainPanelCallback();
+    }
+    });
+    //Ext.get("center").unmask();
+    JKXT.center.doLayout();*/
     //主界面显示
     var viewport = new Ext.Viewport({
         layout: 'border',
