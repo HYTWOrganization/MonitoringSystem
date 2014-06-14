@@ -44,7 +44,7 @@
 
         setInterval(function () {
             store.reload();
-        }, 20000);  //10seconds
+        }, 20000);  //20seconds
     });
 </script>
 <div>

@@ -27,20 +27,11 @@
             return retValue;
         },
 
-        regroup: function () {
-            group = !group;
-            var axis = chart.axes.get(1),
-            selectedGroup = groupOp[+group];
-            axis.dateFormat = selectedGroup.dateFormat;
-            axis.groupBy = selectedGroup.groupBy;
-            chart.redraw();
-        },
-
         genData: function () {
             var memObj1 = Ext.create('JKXT.HandleMemory', "handleMemory");
             var data = [], i = 0,
                 last = false,
-                date = new Date("April 2 2013 10:10:1"),
+                date = startDate;
                 seconds = +date,
                 min = Math.min,
                 max = Math.max,
@@ -52,10 +43,11 @@
                 if (data.length == 30)
                     data.splice(0, 1);
                 data.push({
-                    time: ++i, 
+                    time: Ext.Date.add(date, Ext.Date.SECOND, i),
                     memory: memValue
 
                 });
+                i = i + 10;
                 last = data[data.length - 1];
                 return data;
             };
@@ -70,6 +62,9 @@
             extend: 'Ext.data.Model',
             fields: ['memory', 'time']
         });
+
+        startDate = new Date();
+        endDate = Ext.Date.add(startDate, Ext.Date.MINUTE, 5);
 
         var memObj = Ext.create('JKXT.HandleMemory', "handleMemory");
         var generateData = memObj.genData();
@@ -106,12 +101,20 @@
                     maximum: 100
                 },
                 {
-                    type: 'Numeric',
+                    type: 'Time',
                     position: 'bottom',
                     field: 'time',
                     title: 'Time',
-                    minimum: 1,
-                    maximum: 30
+                    step: [Ext.Date.SECOND, 10], 
+                    dateFormat: 'H:i:s',
+                    groupBy: 'hour,minute,second', //精确度
+                    aggregateOp: 'sum',
+                    constrain: true,
+                    //minimum: 1,
+                    //maximum: 30
+                    fromDate: startDate,
+                    toDate: endDate,
+                    grid: true
                 }
             ],
             series: [
@@ -124,15 +127,19 @@
         });
         var timeAxis = chart.axes.get(1); ;
         JKXT.center.add(chart);
+
+        var iii=1;
         setInterval(function () {
+            iii = iii + 1;
             var gs = generateData();
-            var max = timeAxis.maximum,
+            var max = timeAxis.toDate,
                 lastTime = gs[gs.length - 1].time,
                 markerIndex = chart.markerIndex || 0;
             if (+max < +lastTime) {
                 markerIndex = 1;
-                timeAxis.maximum = lastTime;
-                timeAxis.minimum++;
+                timeAxis.toDate = lastTime;
+                timeAxis.fromDate = Ext.Date.add(Ext.Date.clone(timeAxis.fromDate), Ext.Date.SECOND, 10);
+                //timeAxis.minimum++;
                 chart.markerIndex = markerIndex;
             }
             store.loadData(gs);
